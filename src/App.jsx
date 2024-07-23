@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Map as MapLibreMap, NavigationControl } from "maplibre-gl";
+import maplibregl from "maplibre-gl";
 
 import "maplibre-gl/dist/maplibre-gl.css";
 /**
@@ -36,6 +37,16 @@ const App = () => {
         return { url, resourceType };
       },
     });
+
+    const markerCoordinates = [long, lat];
+    try {
+      // Create a new marker
+      const marker = new maplibregl.Marker()
+        .setLngLat(markerCoordinates) // Set marker position [lng, lat]
+        .addTo(map); // Add marker to the map
+    } catch (error) {
+      console.log("error adding coordinates", error);
+    }
 
     const nav = new NavigationControl({
       visualizePitch: true,
