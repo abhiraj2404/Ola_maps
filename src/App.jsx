@@ -6,7 +6,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 /**
  * Central map component
  */
-
+const API_KEY = import.meta.env.VITE_API_KEY;
 let lat, long;
 const App = () => {
   const [mapReady, setMapReady] = useState(false);
@@ -29,9 +29,9 @@ const App = () => {
         "https://api.olamaps.io/tiles/vector/v1/styles/default-light-standard/style.json",
       transformRequest: (url, resourceType) => {
         if (!url.includes("?")) {
-          url = url + "?api_key=VTpwtiO1cCiCX0hle9VTmQiTFKGkSNoKUy52rfi4";
+          url = url + `?api_key=${API_KEY}`;
         } else {
-          url = url + "&api_key=VTpwtiO1cCiCX0hle9VTmQiTFKGkSNoKUy52rfi4";
+          url = url + `&api_key=${API_KEY}`;
         }
 
         return { url, resourceType };
