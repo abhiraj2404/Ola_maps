@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Map as MapLibreMap, NavigationControl } from "maplibre-gl";
 import maplibregl from "maplibre-gl";
+import { Analytics } from "@vercel/analytics/react";
 
 import "maplibre-gl/dist/maplibre-gl.css";
 /**
@@ -55,11 +56,14 @@ const App = () => {
   }, [mapReady, lat, long]);
 
   return (
-    <div
-      style={{ width: "100vw", height: "100vh", overflow: "hidden" }}
-      ref={() => setMapReady(true)}
-      id="central-map"
-    />
+    <>
+      <div
+        style={{ width: "100vw", height: "100vh", overflow: "hidden" }}
+        ref={() => setMapReady(true)}
+        id="central-map"
+      />
+      <Analytics />
+    </>
   );
 };
 
