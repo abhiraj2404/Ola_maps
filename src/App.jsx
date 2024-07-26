@@ -25,7 +25,9 @@ const App = () => {
     const map = new MapLibreMap({
       container: "central-map",
       center: [long, lat],
-      zoom: 17,
+      zoom: 16,
+      bearing: 45, // rotation angle in degrees
+      pitch: 60,
       style:
         "https://api.olamaps.io/tiles/vector/v1/styles/default-light-standard/style.json",
       transformRequest: (url, resourceType) => {
